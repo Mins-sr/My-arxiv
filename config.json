@@ -5,7 +5,8 @@
     "cs.CL",
     "cs.CV",
     "cs.NE",
-    "stat.ML"
+    "stat.ML",
+    "q-bio.NC"
   ],
   "max_results": 50,
   "lookback_days": 31,
@@ -15,6 +16,7 @@
     "cs.CL": "Computation and Language (Natural Language Processing)",
     "cs.CV": "Computer Vision and Pattern Recognition",
     "cs.NE": "Neural and Evolutionary Computing",
-    "stat.ML": "Machine Learning (Statistics)"
+    "stat.ML": "Machine Learning (Statistics)",
+    "q-bio.NC": "Neurons and Cognition (includes ADHD research)"
   }
 }
