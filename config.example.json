@@ -1,0 +1,28 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.CV",
+    "cs.NE",
+    "stat.ML"
+  ],
+  "max_results": 50,
+  "lookback_days": 1,
+  "description": {
+    "cs.AI": "Artificial Intelligence",
+    "cs.LG": "Machine Learning",
+    "cs.CL": "Computation and Language (Natural Language Processing)",
+    "cs.CV": "Computer Vision and Pattern Recognition",
+    "cs.NE": "Neural and Evolutionary Computing",
+    "cs.RO": "Robotics",
+    "cs.CR": "Cryptography and Security",
+    "cs.DC": "Distributed, Parallel, and Cluster Computing",
+    "cs.IR": "Information Retrieval",
+    "cs.IT": "Information Theory",
+    "stat.ML": "Machine Learning (Statistics)",
+    "math.OC": "Optimization and Control",
+    "quant-ph": "Quantum Physics"
+  },
+  "_comment": "Customize the 'categories' array with your preferred arXiv categories. See https://arxiv.org/category_taxonomy for all available categories."
+}
