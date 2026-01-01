@@ -36,11 +36,15 @@ class ArxivFetcher:
                 'lookback_days': 1
             }
 
-    def fetch_papers(self, category, max_results=50):
+    def fetch_papers(self, category, max_results=50, target_date=None):
         """Fetch papers from a specific arXiv category"""
         # Calculate date range
-        end_date = datetime.now()
-        start_date = end_date - timedelta(days=self.config.get('lookback_days', 1))
+        if target_date:
+            end_date = target_date
+            start_date = target_date - timedelta(days=1)
+        else:
+            end_date = datetime.now()
+            start_date = end_date - timedelta(days=self.config.get('lookback_days', 1))
 
         # Build query
         query = f'cat:{category}'
@@ -102,21 +106,21 @@ class ArxivFetcher:
             print(f"Error fetching papers from {category}: {e}")
             return []
 
-    def fetch_all_categories(self):
+    def fetch_all_categories(self, target_date=None):
         """Fetch papers from all configured categories"""
         all_papers = []
         categories = self.config.get('categories', [])
         max_results = self.config.get('max_results', 50)
 
         for category in categories:
-            papers = self.fetch_papers(category, max_results)
+            papers = self.fetch_papers(category, max_results, target_date)
             all_papers.extend(papers)
             time.sleep(3)  # Be nice to the API
 
         self.papers = all_papers
         return all_papers
 
-    def generate_digest(self, output_dir='digests'):
+    def generate_digest(self, output_dir='digests', target_date=None):
         """Generate markdown digest of papers"""
         if not self.papers:
             print("No papers to generate digest from")
@@ -127,7 +131,10 @@ class ArxivFetcher:
         output_path.mkdir(exist_ok=True)
 
         # Generate filename with date
-        date_str = datetime.now().strftime('%Y-%m-%d')
+        if target_date:
+            date_str = target_date.strftime('%Y-%m-%d')
+        else:
+            date_str = datetime.now().strftime('%Y-%m-%d')
         filename = output_path / f'arxiv_digest_{date_str}.md'
 
         # Group papers by category
@@ -176,33 +183,59 @@ class ArxivFetcher:
         print(f"Digest generated: {filename}")
         return filename
 
+    def generate_historical_digests(self, days=31):
+        """Generate digests for the past N days"""
+        end_date = datetime.now()
+
+        for i in range(days):
+            target_date = end_date - timedelta(days=i)
+            print(f"\nProcessing date: {target_date.strftime('%Y-%m-%d')}")
+
+            # Fetch papers for this specific date
+            papers = self.fetch_all_categories(target_date)
+
+            if papers:
+                # Generate digest for this date
+                self.generate_digest(target_date=target_date)
+                print(f"✓ Generated digest for {target_date.strftime('%Y-%m-%d')} ({len(papers)} papers)")
+            else:
+                print(f"○ No papers found for {target_date.strftime('%Y-%m-%d')}")
+
 
 def main():
     """Main function"""
+    import sys
+
     fetcher = ArxivFetcher()
 
-    # Fetch papers
-    papers = fetcher.fetch_all_categories()
-
-    if papers:
-        # Generate digest
-        digest_file = fetcher.generate_digest()
-        print(f"\n✓ Successfully generated digest with {len(papers)} papers")
-
-        # Generate JSON for web UI
-        try:
-            import subprocess
-            print("\nGenerating JSON for web UI...")
-            result = subprocess.run(['python3', 'generate_json.py'],
-                                  capture_output=True, text=True)
-            if result.returncode == 0:
-                print("✓ JSON generated successfully")
-            else:
-                print(f"⚠ JSON generation failed: {result.stderr}")
-        except Exception as e:
-            print(f"⚠ Could not generate JSON: {e}")
+    # Check if historical mode is requested
+    if '--historical' in sys.argv:
+        print("Running in historical mode - generating digests for past 31 days...")
+        fetcher.generate_historical_digests(days=31)
     else:
-        print("\n✗ No papers found")
+        # Normal daily mode
+        # Fetch papers
+        papers = fetcher.fetch_all_categories()
+
+        if papers:
+            # Generate digest
+            digest_file = fetcher.generate_digest()
+            print(f"\n✓ Successfully generated digest with {len(papers)} papers")
+        else:
+            print("\n✗ No papers found")
+
+    # Generate JSON for web UI
+    try:
+        import subprocess
+        print("\nGenerating JSON for web UI...")
+        result = subprocess.run(['python3', 'generate_json.py'],
+                              capture_output=True, text=True)
+        if result.returncode == 0:
+            print("✓ JSON generated successfully")
+        else:
+            print(f"⚠ JSON generation failed: {result.stderr}")
+    except Exception as e:
+        print(f"⚠ Could not generate JSON: {e}")
 
 
 if __name__ == '__main__':
