@@ -1,0 +1,634 @@
+{
+  "last_updated": "2026-01-01 11:26:40",
+  "total_digests": 31,
+  "all_categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.CV",
+    "cs.LG",
+    "cs.NE",
+    "stat.ML"
+  ],
+  "digests": [
+    {
+      "date": "2026-01-01",
+      "total_papers": 132,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 35,
+        "cs.CL": 22,
+        "cs.CV": 27,
+        "cs.LG": 39,
+        "cs.NE": 4,
+        "stat.ML": 5
+      }
+    },
+    {
+      "date": "2025-12-31",
+      "total_papers": 221,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 7,
+        "stat.ML": 14
+      }
+    },
+    {
+      "date": "2025-12-30",
+      "total_papers": 247,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 10,
+        "stat.ML": 37
+      }
+    },
+    {
+      "date": "2025-12-29",
+      "total_papers": 260,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 10,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-28",
+      "total_papers": 260,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 10,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-27",
+      "total_papers": 260,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 10,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-26",
+      "total_papers": 261,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 11,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-25",
+      "total_papers": 261,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 11,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-24",
+      "total_papers": 264,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 14,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-23",
+      "total_papers": 268,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 18,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-22",
+      "total_papers": 270,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 20,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-21",
+      "total_papers": 273,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 23,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-20",
+      "total_papers": 276,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 26,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-19",
+      "total_papers": 280,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 30,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-18",
+      "total_papers": 285,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 35,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-17",
+      "total_papers": 288,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 38,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-16",
+      "total_papers": 290,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 40,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-15",
+      "total_papers": 292,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 42,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-14",
+      "total_papers": 294,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 44,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-13",
+      "total_papers": 297,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 47,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-12",
+      "total_papers": 299,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 49,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-11",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-10",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-09",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-08",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-07",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-06",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-05",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-04",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-03",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
+    {
+      "date": "2025-12-02",
+      "total_papers": 300,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CL": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    }
+  ]
+}

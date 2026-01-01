@@ -13,8 +13,10 @@ Automatically fetch and digest new papers from arXiv.org in your areas of intere
 
 - 🔍 **Automated Fetching**: Automatically retrieves papers from specified arXiv categories
 - 📅 **Daily Updates**: Runs daily via GitHub Actions
+- 🔄 **Manual Updates**: Trigger updates manually from the web interface
 - 📊 **Organized Digests**: Papers are grouped by category in clean Markdown format
 - 🌐 **Web UI**: Beautiful, responsive web interface to browse and search papers
+- ⚡ **High Performance**: Indexed data structure with lazy loading for fast page loads
 - 🔎 **Advanced Search**: Filter by category, date, and search through titles, authors, and summaries
 - ⚙️ **Customizable**: Easy configuration of research categories
 - 🚀 **No External Dependencies**: Uses only Python standard library
@@ -144,6 +146,12 @@ A responsive web interface is available to browse and search papers:
    - 🏷️ **Category Filter**: Click category tags to filter papers
    - 📅 **Date Filter**: Select specific dates to view
    - 📊 **Sorting**: Sort by date or title
+   - 🔄 **Manual Update**: Trigger GitHub Actions workflow to fetch latest papers
+   - ♻️ **Page Reload**: Refresh the page to load newly updated data
+   - ⚡ **Fast Loading**: Indexed data structure with lazy loading
+     - Initial load: Only 12 KB index file (vs 7.4 MB previously)
+     - Date-specific data loaded on demand (~117 KB per day)
+     - Cached in memory for instant subsequent access
    - 📱 **Responsive**: Works perfectly on mobile, tablet, and desktop
 
 4. **Local Testing**
@@ -173,8 +181,10 @@ arXiv.orgから興味のある分野の新しい論文を毎日自動で取得�
 
 - 🔍 **自動取得**: 指定したarXivカテゴリから論文を自動取得
 - 📅 **毎日更新**: GitHub Actionsで毎日自動実行
+- 🔄 **手動更新**: Webインターフェースから手動で更新をトリガー
 - 📊 **整理されたダイジェスト**: カテゴリ別に整理された見やすいMarkdown形式
 - 🌐 **Web UI**: 美しいレスポンシブWebインターフェースで論文を閲覧・検索
+- ⚡ **高速**: インデックス化されたデータ構造と遅延読み込みで高速なページ読み込み
 - 🔎 **高度な検索**: カテゴリ、日付でフィルタリング、タイトル・著者・要約を検索
 - ⚙️ **カスタマイズ可能**: 研究カテゴリを簡単に設定可能
 - 🚀 **依存関係なし**: Python標準ライブラリのみ使用
@@ -304,6 +314,12 @@ ls digests/
    - 🏷️ **カテゴリフィルター**: カテゴリタグをクリックして絞り込み
    - 📅 **日付フィルター**: 特定の日付を選択して表示
    - 📊 **ソート**: 日付やタイトルで並び替え
+   - 🔄 **手動更新**: GitHub Actionsワークフローをトリガーして最新の論文を取得
+   - ♻️ **ページ再読み込み**: ページを更新して新しく更新されたデータを読み込み
+   - ⚡ **高速読み込み**: インデックス化されたデータ構造と遅延読み込み
+     - 初期読み込み: わずか12KBのインデックスファイル（以前は7.4MB）
+     - 日付別データをオンデマンドで読み込み（1日あたり約117KB）
+     - メモリにキャッシュして即座にアクセス
    - 📱 **レスポンシブ**: スマートフォン、タブレット、PCで完璧に動作
 
 4. **ローカルでのテスト**
