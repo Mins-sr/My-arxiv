@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Convert arXiv digest markdown files to JSON for web display
+Generates indexed JSON structure for improved performance
 """
 
 import json
@@ -68,8 +69,74 @@ def parse_digest_markdown(md_file):
     }
 
 
-def generate_json_data(digests_dir='digests', output_dir='pages'):
-    """Generate JSON data from all digest markdown files"""
+def generate_indexed_json(digests_dir='digests', output_dir='pages'):
+    """Generate indexed JSON structure for improved performance"""
+    digests_path = Path(digests_dir)
+    output_path = Path(output_dir)
+    output_path.mkdir(exist_ok=True)
+
+    # Create digests subdirectory for individual date files
+    digests_json_dir = output_path / 'digests'
+    digests_json_dir.mkdir(exist_ok=True)
+
+    # Find all digest markdown files
+    digest_files = sorted(digests_path.glob('arxiv_digest_*.md'), reverse=True)
+
+    if not digest_files:
+        print("No digest files found")
+        return
+
+    index_data = []
+    all_categories = set()
+
+    for digest_file in digest_files:
+        print(f"Processing {digest_file.name}")
+        try:
+            digest_data = parse_digest_markdown(digest_file)
+
+            # Collect categories
+            categories = list(digest_data['categories'].keys())
+            all_categories.update(categories)
+
+            # Create index entry with metadata only
+            index_entry = {
+                'date': digest_data['date'],
+                'total_papers': digest_data['total_papers'],
+                'categories': categories,
+                'category_counts': {
+                    cat: len(papers)
+                    for cat, papers in digest_data['categories'].items()
+                }
+            }
+            index_data.append(index_entry)
+
+            # Save individual date file
+            date_file = digests_json_dir / f"{digest_data['date']}.json"
+            with open(date_file, 'w', encoding='utf-8') as f:
+                json.dump(digest_data, f, ensure_ascii=False, indent=2)
+            print(f"  → Created {date_file.name}")
+
+        except Exception as e:
+            print(f"Error processing {digest_file.name}: {e}")
+
+    # Save index file
+    index_file = output_path / 'digests_index.json'
+    with open(index_file, 'w', encoding='utf-8') as f:
+        json.dump({
+            'last_updated': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'total_digests': len(index_data),
+            'all_categories': sorted(list(all_categories)),
+            'digests': index_data
+        }, f, ensure_ascii=False, indent=2)
+
+    print(f"\n✓ Generated index file: {index_file}")
+    print(f"  - {len(index_data)} digests")
+    print(f"  - {len(all_categories)} unique categories")
+    print(f"  - Total papers: {sum(d['total_papers'] for d in index_data)}")
+
+
+def generate_legacy_json(digests_dir='digests', output_dir='pages'):
+    """Generate legacy monolithic JSON file for backwards compatibility"""
     digests_path = Path(digests_dir)
     output_path = Path(output_dir)
     output_path.mkdir(exist_ok=True)
@@ -84,7 +151,6 @@ def generate_json_data(digests_dir='digests', output_dir='pages'):
     all_digests = []
 
     for digest_file in digest_files:
-        print(f"Processing {digest_file.name}")
         try:
             digest_data = parse_digest_markdown(digest_file)
             all_digests.append(digest_data)
@@ -96,13 +162,31 @@ def generate_json_data(digests_dir='digests', output_dir='pages'):
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(all_digests, f, ensure_ascii=False, indent=2)
 
-    print(f"\nGenerated {output_file} with {len(all_digests)} digests")
-    print(f"Total papers across all digests: {sum(d['total_papers'] for d in all_digests)}")
+    print(f"✓ Generated legacy file: {output_file} ({len(all_digests)} digests)")
 
 
 def main():
     """Main function"""
-    generate_json_data()
+    print("=" * 60)
+    print("arXiv Digest JSON Generator")
+    print("=" * 60)
+    print()
+
+    # Generate indexed JSON structure (new format)
+    print("Generating indexed JSON structure...")
+    print("-" * 60)
+    generate_indexed_json()
+
+    print()
+    print("-" * 60)
+    print("Generating legacy JSON (backwards compatibility)...")
+    print("-" * 60)
+    generate_legacy_json()
+
+    print()
+    print("=" * 60)
+    print("✓ All JSON files generated successfully")
+    print("=" * 60)
 
 
 if __name__ == '__main__':

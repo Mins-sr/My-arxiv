@@ -56,6 +56,42 @@
             text-align: center;
             font-size: 1.1rem;
             opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .header-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .update-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .update-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            margin-top: 10px;
         }
 
         .controls {
@@ -327,6 +363,17 @@
                 font-size: 1rem;
             }
 
+            .header-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .update-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
             .controls-grid {
                 grid-template-columns: 1fr;
             }
@@ -355,6 +402,11 @@
                 font-size: 1.5rem;
             }
 
+            .update-button {
+                font-size: 0.85rem;
+                padding: 8px 16px;
+            }
+
             .stats {
                 grid-template-columns: 1fr;
             }
@@ -378,6 +430,15 @@
         <div class="container">
             <h1>📚 arXiv Daily Digest</h1>
             <p>最新の研究論文を見やすく表示・検索</p>
+            <div class="header-actions">
+                <a href="#" id="manualUpdateBtn" class="update-button" target="_blank" rel="noopener">
+                    🔄 手動更新
+                </a>
+                <a href="#" id="pageReloadBtn" class="update-button" onclick="location.reload(); return false;">
+                    ♻️ ページ再読み込み
+                </a>
+            </div>
+            <div class="last-updated" id="lastUpdated"></div>
         </div>
     </header>
 
@@ -424,23 +485,41 @@
     </div>
 
     <script>
-        let allDigests = [];
+        let indexData = null;
+        let loadedDigests = {}; // Cache for loaded date-specific data
         let selectedCategories = new Set();
 
-        // Load data
+        // Load index data (lightweight, contains only metadata)
         async function loadData() {
             try {
-                const response = await fetch('digests.json');
-                allDigests = await response.json();
+                const response = await fetch('digests_index.json');
+                indexData = await response.json();
                 initializeUI();
                 renderContent();
             } catch (error) {
                 document.getElementById('content').innerHTML = `
                     <div class="no-results">
                         <h3>データの読み込みに失敗しました</h3>
-                        <p>digests.jsonが見つからないか、読み込めませんでした。</p>
+                        <p>digests_index.jsonが見つからないか、読み込めませんでした。</p>
                     </div>
                 `;
+            }
+        }
+
+        // Load specific date data on demand
+        async function loadDateData(date) {
+            if (loadedDigests[date]) {
+                return loadedDigests[date]; // Return cached data
+            }
+
+            try {
+                const response = await fetch(`digests/${date}.json`);
+                const data = await response.json();
+                loadedDigests[date] = data; // Cache the data
+                return data;
+            } catch (error) {
+                console.error(`Failed to load data for ${date}:`, error);
+                return null;
             }
         }
 
@@ -448,21 +527,16 @@
         function initializeUI() {
             // Populate date selector
             const dateSelect = document.getElementById('dateSelect');
-            allDigests.forEach(digest => {
+            indexData.digests.forEach(digest => {
                 const option = document.createElement('option');
                 option.value = digest.date;
-                option.textContent = digest.date;
+                option.textContent = `${digest.date} (${digest.total_papers}件)`;
                 dateSelect.appendChild(option);
             });
 
-            // Create category tags
-            const categories = new Set();
-            allDigests.forEach(digest => {
-                Object.keys(digest.categories).forEach(cat => categories.add(cat));
-            });
-
+            // Create category tags from all_categories
             const categoryTags = document.getElementById('categoryTags');
-            Array.from(categories).sort().forEach(category => {
+            indexData.all_categories.forEach(category => {
                 const tag = document.createElement('div');
                 tag.className = 'tag';
                 tag.textContent = category;
@@ -470,10 +544,36 @@
                 categoryTags.appendChild(tag);
             });
 
+            // Set up manual update button
+            const repoUrl = getRepoUrl();
+            if (repoUrl) {
+                const updateBtn = document.getElementById('manualUpdateBtn');
+                updateBtn.href = `${repoUrl}/actions/workflows/daily-digest.yml`;
+            }
+
+            // Display last updated time
+            if (indexData.last_updated) {
+                document.getElementById('lastUpdated').textContent =
+                    `最終更新: ${indexData.last_updated}`;
+            }
+
             // Add event listeners
             document.getElementById('searchInput').addEventListener('input', renderContent);
             document.getElementById('dateSelect').addEventListener('change', renderContent);
             document.getElementById('sortSelect').addEventListener('change', renderContent);
+        }
+
+        // Get repository URL from current page URL
+        function getRepoUrl() {
+            const currentUrl = window.location.href;
+            // Extract repo info from GitHub Pages URL
+            // Format: https://{username}.github.io/{repo}/
+            const match = currentUrl.match(/https:\/\/([^.]+)\.github\.io\/([^\/]+)/);
+            if (match) {
+                return `https://github.com/${match[1]}/${match[2]}`;
+            }
+            // Fallback for local development or custom domains
+            return null;
         }
 
         // Toggle category filter
@@ -488,101 +588,122 @@
             renderContent();
         }
 
-        // Filter and render content
-        function renderContent() {
+        // Filter and render content (with lazy loading)
+        async function renderContent() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const selectedDate = document.getElementById('dateSelect').value;
             const sortOrder = document.getElementById('sortSelect').value;
 
-            // Filter digests
-            let filteredDigests = allDigests.filter(digest => {
-                if (selectedDate && digest.date !== selectedDate) return false;
-                return true;
-            });
+            // Show loading state
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>データを読み込み中...</p>
+                </div>
+            `;
 
-            // Collect all papers
-            let allPapers = [];
-            filteredDigests.forEach(digest => {
-                Object.entries(digest.categories).forEach(([category, papers]) => {
-                    papers.forEach(paper => {
-                        allPapers.push({
-                            ...paper,
-                            digestDate: digest.date
+            try {
+                // Filter index data
+                let filteredDigestMeta = indexData.digests.filter(digest => {
+                    if (selectedDate && digest.date !== selectedDate) return false;
+                    return true;
+                });
+
+                // Load actual data for filtered dates
+                let allPapers = [];
+                for (const digestMeta of filteredDigestMeta) {
+                    const digestData = await loadDateData(digestMeta.date);
+                    if (!digestData) continue;
+
+                    Object.entries(digestData.categories).forEach(([category, papers]) => {
+                        papers.forEach(paper => {
+                            allPapers.push({
+                                ...paper,
+                                digestDate: digestData.date
+                            });
                         });
                     });
-                });
-            });
-
-            // Filter by category
-            if (selectedCategories.size > 0) {
-                allPapers = allPapers.filter(paper => selectedCategories.has(paper.category));
-            }
-
-            // Filter by search term
-            if (searchTerm) {
-                allPapers = allPapers.filter(paper => {
-                    return paper.title.toLowerCase().includes(searchTerm) ||
-                           paper.authors.toLowerCase().includes(searchTerm) ||
-                           paper.summary.toLowerCase().includes(searchTerm);
-                });
-            }
-
-            // Sort papers
-            allPapers.sort((a, b) => {
-                switch (sortOrder) {
-                    case 'date-desc':
-                        return b.digestDate.localeCompare(a.digestDate);
-                    case 'date-asc':
-                        return a.digestDate.localeCompare(b.digestDate);
-                    case 'title-asc':
-                        return a.title.localeCompare(b.title);
-                    case 'title-desc':
-                        return b.title.localeCompare(a.title);
-                    default:
-                        return 0;
                 }
-            });
 
-            // Update statistics
-            updateStats(allPapers);
+                // Filter by category
+                if (selectedCategories.size > 0) {
+                    allPapers = allPapers.filter(paper => selectedCategories.has(paper.category));
+                }
 
-            // Render papers
-            const content = document.getElementById('content');
-            if (allPapers.length === 0) {
+                // Filter by search term
+                if (searchTerm) {
+                    allPapers = allPapers.filter(paper => {
+                        return paper.title.toLowerCase().includes(searchTerm) ||
+                               paper.authors.toLowerCase().includes(searchTerm) ||
+                               paper.summary.toLowerCase().includes(searchTerm);
+                    });
+                }
+
+                // Sort papers
+                allPapers.sort((a, b) => {
+                    switch (sortOrder) {
+                        case 'date-desc':
+                            return b.digestDate.localeCompare(a.digestDate);
+                        case 'date-asc':
+                            return a.digestDate.localeCompare(b.digestDate);
+                        case 'title-asc':
+                            return a.title.localeCompare(b.title);
+                        case 'title-desc':
+                            return b.title.localeCompare(a.title);
+                        default:
+                            return 0;
+                    }
+                });
+
+                // Update statistics
+                updateStats(allPapers);
+
+                // Render papers
+                if (allPapers.length === 0) {
+                    content.innerHTML = `
+                        <div class="no-results">
+                            <h3>該当する論文が見つかりませんでした</h3>
+                            <p>検索条件を変更してみてください。</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Group by date
+                const papersByDate = {};
+                allPapers.forEach(paper => {
+                    if (!papersByDate[paper.digestDate]) {
+                        papersByDate[paper.digestDate] = [];
+                    }
+                    papersByDate[paper.digestDate].push(paper);
+                });
+
+                let html = '';
+                Object.entries(papersByDate).sort((a, b) => b[0].localeCompare(a[0])).forEach(([date, papers]) => {
+                    html += `
+                        <div class="digest-section">
+                            <div class="digest-header">
+                                <h2>${date}</h2>
+                                <div class="digest-meta">${papers.length} papers</div>
+                            </div>
+                            <div class="papers-grid">
+                                ${papers.map(paper => renderPaper(paper)).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                content.innerHTML = html;
+            } catch (error) {
+                console.error('Error rendering content:', error);
                 content.innerHTML = `
                     <div class="no-results">
-                        <h3>該当する論文が見つかりませんでした</h3>
-                        <p>検索条件を変更してみてください。</p>
+                        <h3>エラーが発生しました</h3>
+                        <p>データの表示中にエラーが発生しました。</p>
                     </div>
                 `;
-                return;
             }
-
-            // Group by date
-            const papersByDate = {};
-            allPapers.forEach(paper => {
-                if (!papersByDate[paper.digestDate]) {
-                    papersByDate[paper.digestDate] = [];
-                }
-                papersByDate[paper.digestDate].push(paper);
-            });
-
-            let html = '';
-            Object.entries(papersByDate).sort((a, b) => b[0].localeCompare(a[0])).forEach(([date, papers]) => {
-                html += `
-                    <div class="digest-section">
-                        <div class="digest-header">
-                            <h2>${date}</h2>
-                            <div class="digest-meta">${papers.length} papers</div>
-                        </div>
-                        <div class="papers-grid">
-                            ${papers.map(paper => renderPaper(paper)).join('')}
-                        </div>
-                    </div>
-                `;
-            });
-
-            content.innerHTML = html;
         }
 
         // Render single paper
