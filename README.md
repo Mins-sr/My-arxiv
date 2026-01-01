@@ -128,16 +128,16 @@ The workflow is configured to run daily at 9:00 AM UTC. You can also:
 
 A responsive web interface is available to browse and search papers:
 
-1. **Enable GitHub Pages**
+1. **Enable GitHub Pages (One-time setup)**
    - Go to your repository Settings → Pages
-   - Set Source to "Deploy from a branch"
-   - Select branch: `main` (or your default branch)
-   - Select folder: `/pages`
+   - Set Source to "GitHub Actions"
    - Save and wait a few minutes
+   - The site will automatically deploy when new papers are fetched or when changes are pushed to the `pages/` folder
 
 2. **Access the UI**
    - Visit: `https://yourusername.github.io/My-arxiv/`
    - The UI will display all your collected papers
+   - Updates automatically when new digests are generated
 
 3. **Features**
    - 🔍 **Search**: Search across titles, authors, and summaries
@@ -288,16 +288,16 @@ ls digests/
 
 論文を閲覧・検索できるレスポンシブWebインターフェースが利用できます：
 
-1. **GitHub Pagesを有効化**
+1. **GitHub Pagesを有効化（初回のみ）**
    - リポジトリの Settings → Pages へ移動
-   - Source を "Deploy from a branch" に設定
-   - branch: `main`（またはデフォルトブランチ）を選択
-   - folder: `/pages` を選択
+   - Source を "GitHub Actions" に設定
    - 保存して数分待機
+   - 新しい論文が取得されたとき、または `pages/` フォルダに変更がプッシュされたときに自動的にデプロイされます
 
 2. **UIにアクセス**
    - `https://yourusername.github.io/My-arxiv/` にアクセス
    - 収集した全ての論文が表示されます
+   - 新しいダイジェストが生成されると自動的に更新されます
 
 3. **機能**
    - 🔍 **検索**: タイトル、著者、要約を横断検索
