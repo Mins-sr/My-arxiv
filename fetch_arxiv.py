@@ -188,6 +188,19 @@ def main():
         # Generate digest
         digest_file = fetcher.generate_digest()
         print(f"\n✓ Successfully generated digest with {len(papers)} papers")
+
+        # Generate JSON for web UI
+        try:
+            import subprocess
+            print("\nGenerating JSON for web UI...")
+            result = subprocess.run(['python3', 'generate_json.py'],
+                                  capture_output=True, text=True)
+            if result.returncode == 0:
+                print("✓ JSON generated successfully")
+            else:
+                print(f"⚠ JSON generation failed: {result.stderr}")
+        except Exception as e:
+            print(f"⚠ Could not generate JSON: {e}")
     else:
         print("\n✗ No papers found")
 

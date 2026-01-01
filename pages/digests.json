@@ -1,0 +1,39 @@
+[
+  {
+    "date": "2026-01-01",
+    "total_papers": 3,
+    "categories": {
+      "cs.AI": [
+        {
+          "title": "Advances in Large Language Models for Reasoning Tasks",
+          "authors": "Jane Smith, John Doe, et al.",
+          "published": "2026-01-01",
+          "link": "https://arxiv.org/abs/2601.00001",
+          "pdf_link": "https://arxiv.org/pdf/2601.00001",
+          "summary": "This paper presents a comprehensive study of reasoning capabilities in large language models. We introduce a new benchmark and demonstrate significant improvements in logical reasoning tasks through novel training techniques. Our approach shows a 15% improvement over previous state-of-the-art methods.",
+          "category": "cs.AI"
+        },
+        {
+          "title": "Neural Architecture Search for Efficient AI Systems",
+          "authors": "Alice Johnson, Bob Williams, et al.",
+          "published": "2026-01-01",
+          "link": "https://arxiv.org/abs/2601.00002",
+          "pdf_link": "https://arxiv.org/pdf/2601.00002",
+          "summary": "We propose an automated neural architecture search method that optimizes for both accuracy and computational efficiency. Our approach reduces inference time by 40% while maintaining comparable accuracy to manually designed architectures.",
+          "category": "cs.AI"
+        }
+      ],
+      "cs.LG": [
+        {
+          "title": "Self-Supervised Learning with Contrastive Predictive Coding",
+          "authors": "Charlie Brown, Diana Lee, et al.",
+          "published": "2026-01-01",
+          "link": "https://arxiv.org/abs/2601.00003",
+          "pdf_link": "https://arxiv.org/pdf/2601.00003",
+          "summary": "This work introduces a novel self-supervised learning framework based on contrastive predictive coding. We demonstrate state-of-the-art results on several benchmark datasets without requiring labeled data. The method shows particular promise for low-resource scenarios.",
+          "category": "cs.LG"
+        }
+      ]
+    }
+  }
+]

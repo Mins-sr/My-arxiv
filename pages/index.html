@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arXiv Daily Digest Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --card-background: #ffffff;
+            --text-color: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --border-color: #bdc3c7;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        header p {
+            text-align: center;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .controls {
+            background: var(--card-background);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .control-group input,
+        .control-group select {
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .control-group input:focus,
+        .control-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .tag:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .tag.active {
+            background-color: var(--accent-color);
+            border-color: var(--primary-color);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-background);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .digest-section {
+            margin-bottom: 30px;
+        }
+
+        .digest-header {
+            background: var(--card-background);
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .digest-header h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .digest-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .papers-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .paper-card {
+            background: var(--card-background);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border-left: 4px solid var(--border-color);
+        }
+
+        .paper-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
+            border-left-color: var(--secondary-color);
+        }
+
+        .paper-category {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .paper-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .paper-authors {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .paper-published {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .paper-links {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .paper-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .paper-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .paper-link.pdf {
+            background-color: var(--accent-color);
+        }
+
+        .paper-link.pdf:hover {
+            background-color: #c0392b;
+        }
+
+        .paper-summary {
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--card-background);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .paper-title {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .controls,
+            .digest-header,
+            .paper-card {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .paper-links {
+                flex-direction: column;
+            }
+
+            .paper-link {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📚 arXiv Daily Digest</h1>
+            <p>最新の研究論文を見やすく表示・検索</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Controls -->
+        <div class="controls">
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label for="searchInput">🔍 検索</label>
+                    <input type="text" id="searchInput" placeholder="タイトル、著者、要約から検索...">
+                </div>
+                <div class="control-group">
+                    <label for="dateSelect">📅 日付</label>
+                    <select id="dateSelect">
+                        <option value="">すべての日付</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="sortSelect">📊 並び替え</label>
+                    <select id="sortSelect">
+                        <option value="date-desc">日付（新しい順）</option>
+                        <option value="date-asc">日付（古い順）</option>
+                        <option value="title-asc">タイトル（A-Z）</option>
+                        <option value="title-desc">タイトル（Z-A）</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>🏷️ カテゴリフィルター</label>
+                <div class="filter-tags" id="categoryTags"></div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats" id="stats"></div>
+
+        <!-- Content -->
+        <div id="content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>データを読み込み中...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allDigests = [];
+        let selectedCategories = new Set();
+
+        // Load data
+        async function loadData() {
+            try {
+                const response = await fetch('digests.json');
+                allDigests = await response.json();
+                initializeUI();
+                renderContent();
+            } catch (error) {
+                document.getElementById('content').innerHTML = `
+                    <div class="no-results">
+                        <h3>データの読み込みに失敗しました</h3>
+                        <p>digests.jsonが見つからないか、読み込めませんでした。</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize UI
+        function initializeUI() {
+            // Populate date selector
+            const dateSelect = document.getElementById('dateSelect');
+            allDigests.forEach(digest => {
+                const option = document.createElement('option');
+                option.value = digest.date;
+                option.textContent = digest.date;
+                dateSelect.appendChild(option);
+            });
+
+            // Create category tags
+            const categories = new Set();
+            allDigests.forEach(digest => {
+                Object.keys(digest.categories).forEach(cat => categories.add(cat));
+            });
+
+            const categoryTags = document.getElementById('categoryTags');
+            Array.from(categories).sort().forEach(category => {
+                const tag = document.createElement('div');
+                tag.className = 'tag';
+                tag.textContent = category;
+                tag.onclick = () => toggleCategory(category, tag);
+                categoryTags.appendChild(tag);
+            });
+
+            // Add event listeners
+            document.getElementById('searchInput').addEventListener('input', renderContent);
+            document.getElementById('dateSelect').addEventListener('change', renderContent);
+            document.getElementById('sortSelect').addEventListener('change', renderContent);
+        }
+
+        // Toggle category filter
+        function toggleCategory(category, element) {
+            if (selectedCategories.has(category)) {
+                selectedCategories.delete(category);
+                element.classList.remove('active');
+            } else {
+                selectedCategories.add(category);
+                element.classList.add('active');
+            }
+            renderContent();
+        }
+
+        // Filter and render content
+        function renderContent() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const selectedDate = document.getElementById('dateSelect').value;
+            const sortOrder = document.getElementById('sortSelect').value;
+
+            // Filter digests
+            let filteredDigests = allDigests.filter(digest => {
+                if (selectedDate && digest.date !== selectedDate) return false;
+                return true;
+            });
+
+            // Collect all papers
+            let allPapers = [];
+            filteredDigests.forEach(digest => {
+                Object.entries(digest.categories).forEach(([category, papers]) => {
+                    papers.forEach(paper => {
+                        allPapers.push({
+                            ...paper,
+                            digestDate: digest.date
+                        });
+                    });
+                });
+            });
+
+            // Filter by category
+            if (selectedCategories.size > 0) {
+                allPapers = allPapers.filter(paper => selectedCategories.has(paper.category));
+            }
+
+            // Filter by search term
+            if (searchTerm) {
+                allPapers = allPapers.filter(paper => {
+                    return paper.title.toLowerCase().includes(searchTerm) ||
+                           paper.authors.toLowerCase().includes(searchTerm) ||
+                           paper.summary.toLowerCase().includes(searchTerm);
+                });
+            }
+
+            // Sort papers
+            allPapers.sort((a, b) => {
+                switch (sortOrder) {
+                    case 'date-desc':
+                        return b.digestDate.localeCompare(a.digestDate);
+                    case 'date-asc':
+                        return a.digestDate.localeCompare(b.digestDate);
+                    case 'title-asc':
+                        return a.title.localeCompare(b.title);
+                    case 'title-desc':
+                        return b.title.localeCompare(a.title);
+                    default:
+                        return 0;
+                }
+            });
+
+            // Update statistics
+            updateStats(allPapers);
+
+            // Render papers
+            const content = document.getElementById('content');
+            if (allPapers.length === 0) {
+                content.innerHTML = `
+                    <div class="no-results">
+                        <h3>該当する論文が見つかりませんでした</h3>
+                        <p>検索条件を変更してみてください。</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Group by date
+            const papersByDate = {};
+            allPapers.forEach(paper => {
+                if (!papersByDate[paper.digestDate]) {
+                    papersByDate[paper.digestDate] = [];
+                }
+                papersByDate[paper.digestDate].push(paper);
+            });
+
+            let html = '';
+            Object.entries(papersByDate).sort((a, b) => b[0].localeCompare(a[0])).forEach(([date, papers]) => {
+                html += `
+                    <div class="digest-section">
+                        <div class="digest-header">
+                            <h2>${date}</h2>
+                            <div class="digest-meta">${papers.length} papers</div>
+                        </div>
+                        <div class="papers-grid">
+                            ${papers.map(paper => renderPaper(paper)).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            content.innerHTML = html;
+        }
+
+        // Render single paper
+        function renderPaper(paper) {
+            return `
+                <div class="paper-card">
+                    <div class="paper-category">${paper.category}</div>
+                    <div class="paper-title">${paper.title}</div>
+                    <div class="paper-authors">👥 ${paper.authors}</div>
+                    <div class="paper-published">📅 ${paper.published}</div>
+                    <div class="paper-links">
+                        <a href="${paper.link}" class="paper-link" target="_blank" rel="noopener">
+                            🔗 Paper
+                        </a>
+                        ${paper.pdf_link ? `
+                            <a href="${paper.pdf_link}" class="paper-link pdf" target="_blank" rel="noopener">
+                                📄 PDF
+                            </a>
+                        ` : ''}
+                    </div>
+                    <div class="paper-summary">${paper.summary}</div>
+                </div>
+            `;
+        }
+
+        // Update statistics
+        function updateStats(papers) {
+            const categories = new Set(papers.map(p => p.category));
+            const dates = new Set(papers.map(p => p.digestDate));
+
+            const stats = document.getElementById('stats');
+            stats.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-value">${papers.length}</div>
+                    <div class="stat-label">論文数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${categories.size}</div>
+                    <div class="stat-label">カテゴリ</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${dates.size}</div>
+                    <div class="stat-label">日数</div>
+                </div>
+            `;
+        }
+
+        // Initialize on load
+        loadData();
+    </script>
+</body>
+</html>

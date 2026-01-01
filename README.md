@@ -14,6 +14,8 @@ Automatically fetch and digest new papers from arXiv.org in your areas of intere
 - 🔍 **Automated Fetching**: Automatically retrieves papers from specified arXiv categories
 - 📅 **Daily Updates**: Runs daily via GitHub Actions
 - 📊 **Organized Digests**: Papers are grouped by category in clean Markdown format
+- 🌐 **Web UI**: Beautiful, responsive web interface to browse and search papers
+- 🔎 **Advanced Search**: Filter by category, date, and search through titles, authors, and summaries
 - ⚙️ **Customizable**: Easy configuration of research categories
 - 🚀 **No External Dependencies**: Uses only Python standard library
 
@@ -122,6 +124,40 @@ The workflow is configured to run daily at 9:00 AM UTC. You can also:
 - Manually trigger the workflow from the Actions tab
 - Adjust the schedule in `.github/workflows/daily-digest.yml`
 
+### Web UI
+
+A responsive web interface is available to browse and search papers:
+
+1. **Enable GitHub Pages**
+   - Go to your repository Settings → Pages
+   - Set Source to "Deploy from a branch"
+   - Select branch: `main` (or your default branch)
+   - Select folder: `/pages`
+   - Save and wait a few minutes
+
+2. **Access the UI**
+   - Visit: `https://yourusername.github.io/My-arxiv/`
+   - The UI will display all your collected papers
+
+3. **Features**
+   - 🔍 **Search**: Search across titles, authors, and summaries
+   - 🏷️ **Category Filter**: Click category tags to filter papers
+   - 📅 **Date Filter**: Select specific dates to view
+   - 📊 **Sorting**: Sort by date or title
+   - 📱 **Responsive**: Works perfectly on mobile, tablet, and desktop
+
+4. **Local Testing**
+   ```bash
+   # Generate JSON data
+   python generate_json.py
+
+   # Start local server
+   cd pages
+   python -m http.server 8000
+
+   # Visit http://localhost:8000 in your browser
+   ```
+
 ### License
 
 MIT License - Feel free to use and modify!
@@ -138,6 +174,8 @@ arXiv.orgから興味のある分野の新しい論文を毎日自動で取得�
 - 🔍 **自動取得**: 指定したarXivカテゴリから論文を自動取得
 - 📅 **毎日更新**: GitHub Actionsで毎日自動実行
 - 📊 **整理されたダイジェスト**: カテゴリ別に整理された見やすいMarkdown形式
+- 🌐 **Web UI**: 美しいレスポンシブWebインターフェースで論文を閲覧・検索
+- 🔎 **高度な検索**: カテゴリ、日付でフィルタリング、タイトル・著者・要約を検索
 - ⚙️ **カスタマイズ可能**: 研究カテゴリを簡単に設定可能
 - 🚀 **依存関係なし**: Python標準ライブラリのみ使用
 
@@ -245,6 +283,40 @@ ls digests/
 ワークフローは毎日午前9時（UTC）に実行されるよう設定されています。また以下も可能です：
 - Actionsタブから手動でワークフローをトリガー
 - `.github/workflows/daily-digest.yml`でスケジュールを調整
+
+### Web UI
+
+論文を閲覧・検索できるレスポンシブWebインターフェースが利用できます：
+
+1. **GitHub Pagesを有効化**
+   - リポジトリの Settings → Pages へ移動
+   - Source を "Deploy from a branch" に設定
+   - branch: `main`（またはデフォルトブランチ）を選択
+   - folder: `/pages` を選択
+   - 保存して数分待機
+
+2. **UIにアクセス**
+   - `https://yourusername.github.io/My-arxiv/` にアクセス
+   - 収集した全ての論文が表示されます
+
+3. **機能**
+   - 🔍 **検索**: タイトル、著者、要約を横断検索
+   - 🏷️ **カテゴリフィルター**: カテゴリタグをクリックして絞り込み
+   - 📅 **日付フィルター**: 特定の日付を選択して表示
+   - 📊 **ソート**: 日付やタイトルで並び替え
+   - 📱 **レスポンシブ**: スマートフォン、タブレット、PCで完璧に動作
+
+4. **ローカルでのテスト**
+   ```bash
+   # JSONデータを生成
+   python generate_json.py
+
+   # ローカルサーバーを起動
+   cd pages
+   python -m http.server 8000
+
+   # ブラウザで http://localhost:8000 にアクセス
+   ```
 
 ### ライセンス
 
