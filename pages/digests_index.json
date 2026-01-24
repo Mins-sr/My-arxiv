@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-01-23 09:27:53",
-  "total_digests": 53,
+  "last_updated": "2026-01-24 09:18:36",
+  "total_digests": 54,
   "all_categories": [
     "cs.AI",
     "cs.CL",
@@ -10,6 +10,12 @@
     "stat.ML"
   ],
   "digests": [
+    {
+      "date": "2026-01-24",
+      "total_papers": 50,
+      "categories": [],
+      "category_counts": {}
+    },
     {
       "date": "2026-01-23",
       "total_papers": 350,
