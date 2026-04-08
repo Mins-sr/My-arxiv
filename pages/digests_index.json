@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-07 10:07:14",
-  "total_digests": 127,
+  "last_updated": "2026-04-08 10:06:31",
+  "total_digests": 128,
   "all_categories": [
     "cs.AI",
     "cs.CL",
@@ -10,6 +10,24 @@
     "stat.ML"
   ],
   "digests": [
+    {
+      "date": "2026-04-08",
+      "total_papers": 250,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE",
+        "stat.ML"
+      ],
+      "category_counts": {
+        "cs.AI": 50,
+        "cs.CV": 50,
+        "cs.LG": 50,
+        "cs.NE": 50,
+        "stat.ML": 50
+      }
+    },
     {
       "date": "2026-04-07",
       "total_papers": 300,
