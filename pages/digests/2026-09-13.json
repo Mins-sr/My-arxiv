@@ -1,0 +1,458 @@
+{
+  "date": "2026-09-13",
+  "total_papers": 50,
+  "categories": {
+    "cs.AI": [
+      {
+        "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+        "authors": "Boning Li, Longbo Huang",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11923v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11923v1",
+        "summary": "Counterfactual regret minimization (CFR) is one of the few large numerical workloads that still runs faster on CPUs than on GPUs. Each iteration sweeps a game tree with up to billions of states in millions of small, interdependent gather and scatter steps issued through a generic tree interface. On a GPU every kernel finishes in microseconds, so kernel launches and framework dispatch dominate the run time, and prior GPU implementations have lost to optimized CPU code. We observe that for a fixed...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "General Quantification of Covariate and Concept Shifts",
+        "authors": "Hongbo Chen, Li Charlie Xia",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11918v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11918v1",
+        "summary": "Generalization under distribution shift remains a core challenge in modern machine learning, yet existing learning bound theory is limited to narrow, idealized settings and is non-estimable from samples. In this paper, we bridge the gap between theory and practical applications. We first show that existing definition of concept shift breaks when the source and target supports mismatch. Leveraging entropic optimal transport, we propose a key notion: $γ^{*}\\!$-concept shifts, and derive a general ...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Can Edge-Deployable Vision-Language Models Identify Species?",
+        "authors": "William Zhou, Mayukha Siripuram, Xiao Yan, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11916v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11916v1",
+        "summary": "Camera traps often run in the field on edge hardware with limited or no connectivity, making small, locally-deployable vision-language models (VLMs) -- not frontier-scale ones -- the practically relevant class to evaluate for species identification. We test whether models in this deployment-relevant 2--8B range carry genuine taxonomic knowledge, evaluating four such VLMs (Qwen3-VL 2B/4B/8B, Gemma3 4B) against the domain-specific specialist BioCLIP (300M parameters) on a 96-species task, comparin...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Generative Marketing Mix Modeling: A Causal Inference Framework Linking GEO and GEM to Business Impact",
+        "authors": "Masahiro Kato, Daiki Honma, Taka Kato",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11915v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11915v1",
+        "summary": "Generative artificial intelligence changes how firms reach customers, but standard marketing data do not record how often users see and notice a firm's name in generated answers. We develop Generative Marketing Mix Modeling (GMMM) to estimate the causal effects of Generative Engine Optimization (GEO) and Generative Engine Marketing (GEM). For GEO, GMMM combines repeated generated answers with question counts, shares of use across generative systems, and notice probabilities. For GEM, it combines...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Artificial Id: Drive and Persistent Alignment in Agentic AI",
+        "authors": "Yakov Pyotr Shkolnikov",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11911v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11911v1",
+        "summary": "Agentic AI is moving from bounded task execution toward systems that retain consequential state, continue operating and adapt across task boundaries. That shift creates a control problem that current harnesses largely solve by hand: objectives, retries, verification, stopping rules and other behavioral transitions are specified externally. We propose an artificial id, an adaptive internal drive for determining whether behavior should continue, stop or change. In a minimal virtual Petri-dish expe...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "MindTopo: Can Foundation Models Reason in Topological Space?",
+        "authors": "Yunfei Ge, Anbang Liu, Qineng Wang, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11900v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11900v1",
+        "summary": "Spatial reasoning depends not only on metric properties such as distance, angle, and shape, but also on topological relations that remain invariant under continuous deformation. Cognitive science identifies these relations as foundational to spatial understanding, yet foundation-model evaluations largely focus on metric or viewpoint-dependent relations. We introduce MindTopo, a benchmark of topological intuition across five properties grounded in cognitive science and formal topology: continuity...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Domain-Specific Hallucination Detection in Large Language Models",
+        "authors": "Varun Teja Chundru, Debasmita Biswas",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11878v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11878v1",
+        "summary": "Large language models generate fluent text that can contain unfaithful claims -- a phenomenon known as hallucination. We present a multi-signal detection pipeline combining fine-tuned DeBERTa-v3 classification, Monte Carlo (MC) Dropout uncertainty quantification, and temperature-scaled calibration for response-level hallucination detection. Evaluated on the HaluEval benchmark, our pipeline achieves F1=0.915 and AUROC=0.977 on general-domain tasks, with per-task F1 scores of 0.97 (QA), 0.96 (Summ...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Biology-in-the-loop: Amortized Adaptive Hit Discovery in CRISPR Screens",
+        "authors": "Carl Edwards, Edward De Brouwer, Xiner Li, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11877v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11877v1",
+        "summary": "Many biological discovery problems require experiments to be selected sequentially under constrained budgets. CRISPR screening is a prominent example, as exhaustive perturbation testing is often infeasible and candidate perturbations must instead be prioritized over multiple experimental rounds. Despite the importance of this problem, existing benchmarks for adaptive hit discovery remain limited in scale and diversity. Here, we introduce AssayBench-Loop, a large-scale benchmark for adaptive hit ...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "On the Regularization Landscape for the Linear Recommendation Models",
+        "authors": "Dong Li, Zhenming Liu, Ruoming Jin, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11876v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11876v1",
+        "summary": "Recently, a wide range of recommendation algorithms inspired by deep learning techniques have emerged as the performance leaders on several standard recommendation benchmarks. While these algorithms were built on different DL techniques (e.g., dropouts, autoencoder), they have similar performance and even similar cost functions. This paper studies whether the models' comparable performance are sheer coincidence, or they can be unified under a single framework. We find that all linear performance...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement",
+        "authors": "Yi Duan, Ying Liu, Zirui Tang, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11873v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11873v1",
+        "summary": "Recursive self-improvement (RSI) enables AI systems to turn experience and feedback into persistent changes that improve both their capabilities and the process of future improvement. We first use the Headroom-Closed Index (HCI) to reveal the problems of existing LLMs, then introduce the RSI concept and its development roadmap: from improvement-execution autonomy, improvement-strategy autonomy, experience-acquisition autonomy, and environment-adaptation autonomy, to recursive meta-improvement. N...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "RetroThinker: Enabling Retrospective Thinking in Speech LLMs",
+        "authors": "Yi-Jen Shih, Puyuan Peng, Abdelrahman Mohamed, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11864v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11864v1",
+        "summary": "Speech large language models (SpeechLLMs) offer reduced latency and retain paralinguistic nuances that are typically lost in cascaded automatic speech recognition (ASR) and text-based LM architectures. However, they continue to lag behind text-only LLMs on complex reasoning tasks, while real-time spoken interaction imposes strict latency constraints. Although prior works employ Chain-of-Thought (CoT) and concurrent reasoning to enhance reasoning capabilities without inducing prohibitive delays, ...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Explainability Assistant: A Conversational XAI Interface for Interpreting Energy Consumption Models",
+        "authors": "Rodion Krjutškov, Eduard Barbu, Nikos Sakkas, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11860v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11860v1",
+        "summary": "Energy consumption forecasting relies on increasingly complex machine learning (ML) models, such as Genetic Programming-based symbolic regressors, whose predictions can be difficult for facility managers and building operators to interpret. Explainable Artificial Intelligence (XAI) techniques address this opacity, but traditional XAI dashboards require substantial technical expertise and provide limited flexibility for dynamic, context-aware inquiry. Conversational XAI systems offer a promising ...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "From Parameters to Answers: How LLMs Retrieve and Use Their Internal Knowledge",
+        "authors": "Wenkang Wei, Yuan Fang, Renhe Jiang, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11859v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11859v1",
+        "summary": "How does a language model's dependence on query-routing information and target knowledge change as it answers a question? We study this question through layerwise interventions on the hidden state at the end of the question. Across Qwen, Llama, and Gemma, we compare country-continent questions with noun, adjective, and code answers while keeping several fitted measurements distinct. A pair-conditioned request direction describes which country is queried in natural single-country questions; a glo...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Model-Aware Schedules Improve Generation via Fiberwise Optimal Transport",
+        "authors": "Luyi Jia, Boyan Zhang, Yilun Liu, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11842v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11842v1",
+        "summary": "Diffusion and flow-matching schedules control the signal and noise coefficients that mix data and noise along affine probability paths. Minimizing a kinetic action defined on coefficient paths, motivated by optimal transport, helps explain strong baselines but remains model-agnostic and ignores prediction error. Here we introduce a model-aware schedule construction based on fiberwise optimal transport. At a fixed time and state on the probability path, compatible signal/noise decompositions form...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Understanding Operator Attitudes Toward AI-Supported Decision Making in Maritime Operations",
+        "authors": "Doreen Jirak, Armeen Saroukanoff, Dirk van Rooy",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11805v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11805v1",
+        "summary": "Maritime Autonomous Surface Ships (MASS) and AI- supported decision assistants are expected to transform maritime operations, but their safe integration depends on how maritime professionals perceive and trust such systems. This paper presents a survey study on maritime stakeholders' attitudes toward an AI-supported assistant in collision-avoidance scenarios. Participants evaluated technology anxiety, trust in automation, and explanation quality using established and adapted questionnaires, comp...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Logit Refiner: Improving Visual Autoregressive Models via Intra-Scale Dependency Modeling",
+        "authors": "Meimingwei Li, Stefan Andreas Baumann, Felix Krause, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11804v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11804v1",
+        "summary": "Visual Autoregressive Models (VAR) generate images through next-scale prediction, producing all tokens within each scale in parallel. We show that this parallel decoding constitutes a mean-field-style approximation that discards spatial dependencies among same-scale tokens, causing locally incoherent samples regardless of backbone capacity -- a limitation of the decoding rule. Addressing this limitation, we introduce the Logit Refiner, a lightweight autoregressive module that restores intra-scal...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Thinking with Looped Flows",
+        "authors": "Ayhan Suleymanzade, Chanhyuk Lee, Floor Eijkelboom, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11801v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11801v1",
+        "summary": "Humans and machines often solve harder problems by spending more time on computation. In deep learning, looped models implement this idea during inference by recurrently updating a hidden state. In practice, however, their training backpropagates through only one or a few updates, making it hard to train early updates to support future ones. We propose looped flows, an approach that sidesteps this issue by training the recurrence with local denoising objectives. By imposing temporal association ...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Beyond Word Error Rate: A Switch Aware Evaluation of ASR and Audio Language Models on English Yoruba Code-Switched Speech",
+        "authors": "Chibuzor Okocha, Christan Earl Grant",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11786v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11786v1",
+        "summary": "Automatic speech recognition (ASR) systems and audio language models (audio LMs) now report low error rates on monolingual benchmarks, but their behavior on code switched speech in low resource, diacritic rich languages remains poorly characterized. We present a switch aware evaluation of eleven modern systems (six ASR models and five audio LMs) on English Yoruba code-switched speech, using a deterministic 2000 utterance evaluation set and a shared scoring pipeline. Beyond word error rate (WER),...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Recognizing Is Not Reversing: A Controlled Inversion Test of Fact-Preserving News Framing",
+        "authors": "Yi Liu",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11769v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11769v1",
+        "summary": "Large language models (LLMs) are increasingly used to analyze and rewrite news, yet current framing studies mainly evaluate generation, detection, or whether rewritten text appears more neutral. They do not directly show whether a model can undo a known framing transformation while keeping the facts fixed. We introduce a controlled inversion test over three established textual realizations of framing: evaluative lexis, agency realization, and information salience. Across 60 news articles and thr...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "A Unified Per-Token Gating Family for On-Policy Distillation: FKL/RKL Mixing with Multi-Channel and Bias Coefficients",
+        "authors": "Suwan Wu, Yumeng Lin, Pengcheng Yuan, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11768v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11768v1",
+        "summary": "Per-token gating of forward/reverse KL losses has become a standard technique for on-policy knowledge distillation (OPD), but existing methods such as EOPD (Jin et al., 2026) and ToDi (Jung et al., 2025) each fix a single gating signal and a single gating direction, and the two have never been compared directly. We introduce a four-coefficient parameterization lambda_t = sigma(a * h_t + b * u(x) + c + d * gap_t) in which direction-aligned proxies of EOPD and ToDi appear as one-dimensional (1D) r...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "SIRF: A Spec-Internalized Risk Foundation Model for Industrial Content Risk Control",
+        "authors": "Suwan Wu, Yumeng Lin, Pengcheng Yuan, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11752v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11752v1",
+        "summary": "For industrial content risk control, the real deployment constraint is not average accuracy but how much risk can be auto-handled under high precision and second-level latency. We present SIRF (Spec-Internalized Risk Foundation Model), which internalizes a platform's complex policies, synthesized without additional human annotation via EntiGraph, MAGA rewriting and account-level chain-of-thought (CoT), into the weights via continued pretraining (CPT), so rules are applied at high precision under...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "LOCUS: Task-Aware Low-Rank Post-Training for Token-Efficient Language Generation",
+        "authors": "Dongfang Zhao",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11739v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11739v1",
+        "summary": "Large language model serving costs scale directly with output sequence length, yet standard preference alignment often inflates response verbosity without improving utility. We study whether the parameterization of post-training updates affects generation length: low-rank subspaces alter sequence length without modifying the alignment loss. We present LOCUS, a method that selects a task-aware low-rank adaptation subspace to minimize output-token cost subject to a utility constraint. Within this ...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "ORCH: Organizational Principles Enable Collective Intelligence in Embodied AI",
+        "authors": "Zhengran Ji, Jonathan Hyun, Boyuan Chen",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11737v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11737v1",
+        "summary": "Collective intelligence depends not only on the capabilities of individual members, but also on how those members are organized. Yet artificial multi-agent systems are typically assembled using fixed organizational structures, even when the physical tasks they perform impose fundamentally different coordination requirements. Here we show that principles from human organization theory can be operationalized to organize large, heterogeneous collectives of embodied artificial agents. We introduce O...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Continuous-Time Acoustic Modelling with Neural Controlled Differential Equations",
+        "authors": "Mattias Cross, Minghui Zhao, Anton Ragni",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11725v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11725v1",
+        "summary": "Text-to-speech (TTS) models commonly address text--speech alignment by expanding phone-level encoder states to frame-level decoder inputs using predicted durations. While this length-regulation step resolves alignment structurally, this use of duration typically changes only where and how often latent states appear, not the values of the states themselves. This paper proposes a continuous-time mechanism for duration-aware acoustic modelling in TTS using neural controlled differential equations (...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "A Time-Based Readout for Vector-Matrix Multiplication in Fully Analog Memristive SNNs",
+        "authors": "Elia Mateu-Barriendos, Álvaro Gómez-Pau, Josep Rius, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11713v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11713v1",
+        "summary": "Artificial neural networks rely on vector-matrix multiplications (VMMs), whose implementation in von Neumann architectures is dominated by costly data movement between memory and processing units. Spiking neural networks (SNNs) mitigate this bottleneck by performing in-memory, analog VMMs using memristive crossbar arrays. However, conventional current-mode readout circuits incur significant area and power overhead.   This work proposes a fully analog readout architecture based on voltage-to-time...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "When Agents Disagree: Bayesian Backward Reasoning as a Label-Free Anchor for Multi-Agent Collective Decision-Making",
+        "authors": "Ken Chen, Wei Wang, Sachith Seneviratne, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11709v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11709v1",
+        "summary": "When multiple LLM agents yield conflicting answers, the decision-making process dictates whether agent diversity improves performance or merely compounds shared errors. Existing collective decision-making methods, including voting, electoral rules, and LLM judges, rely on forward reasoning: they map evidence to labels in one direction. Although these methods can combine diverse forward traces, they still aggregate estimates that share this evidence-to-label factorization and can inherit correlat...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Language-Augmented Semantic Priors for B-Spline Surface Fitting",
+        "authors": "Yunzhong Lou, Yusheng Luo, Jiahao Li, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11708v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11708v1",
+        "summary": "The use of B-splines and Non-Uniform Rational B-Splines surfaces constitutes the mathematical foundation of contemporary computer-aided design (CAD) systems. Despite long-term progress, geometric kernels in traditional CAD still rely heavily on predetermined heuristic initialization for surface fitting and parameterization. Meanwhile, the procedural semantics and design intent encoded in modeling histories are largely ignored during geometry generation. This disconnect creates a gap between high...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "ActSafeGuard: Differentiable and Training-Aligned Constraint Enforcement for Flow-Matching Policies",
+        "authors": "Jianming Ma, Rongjun Jin, Xiaxi Si, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11697v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11697v1",
+        "summary": "Vision-Language-Action (VLA) and World-Action Models (WAMs) have demonstrated strong capabilities in general-purpose robotic manipulation, yet their generated actions may violate hard physical constraints and therefore be unsafe or infeasible for deployment. Existing safety approaches either optimize statistical safety objectives without deterministic per-step guarantees or correct unsafe actions only during inference, creating a mismatch between policy training and execution. We introduce ActSa...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "COBRA-Skills: Contextual Bandit-Guided Evolution for Agent Skill Optimization",
+        "authors": "Pingchen Lu, Xiangyi Wang, Xiang Li, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11682v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11682v1",
+        "summary": "Large language model (LLM) agents can benefit from reusable skills distilled from prior task experience, yet existing skill optimization methods often rely on costly execution-based evaluation and substantial task data. We introduce \\textbf{COBRA-Skills}, an efficient framework that formulates skill optimization as budgeted sequential optimization over a dynamically evolving candidate space. COBRA-Skills couples contextual-bandit-guided prioritization with evidence-grounded skill evolution, sele...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Ecdysis: Efficient and Effective Training of Runtime Harnesses for LLM Agents",
+        "authors": "Ruiqing Yue, Yu Cui, Zhuoyu Sun, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11677v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11677v1",
+        "summary": "Self-evolving runtime harnesses can substantially improve the capabilities of large language model (LLM) agents and provide a promising paradigm for optimizing agent execution. Existing harness evolution methods typically rely on iterative search, repeatedly evaluating and revising candidate harnesses based on execution feedback from task instances. While this paradigm enables continuous harness optimization, it incurs substantial time overhead due to repeated agent executions and code modificat...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Geospatial AI, Dataverse Metadata, and the Study of Place-Based Government",
+        "authors": "Danny EBanks, Devika Jain",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11674v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11674v1",
+        "summary": "Harvard Dataverse hosts over 150,000 research datasets, but the geographic information those datasets carry is entered as free text by depositors and has never been assembled into a searchable structure. We construct a knowledge graph from the repository's public data and metadata, organizing 102,650 datasets within a 215,985-node network of 528,003 edges linking datasets to keywords, publications, subjects, journals, and locations. Of those datasets, 43,991 (42.9 percent) carry at least one geo...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Warrant Theory",
+        "authors": "Khashayar Irani",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11667v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11667v1",
+        "summary": "In this paper, we develop warrant theory as a philosophical discipline concerned with the inferential legitimacy of propositions within logical analysis. Warrant theory reconceptualises logic as a normative framework governing the conditions under which propositions may be introduced, accepted, rejected, and inferentially employed. Warrant is understood as inferential entitlement and is distinguished from truth, belief, and other psychological attitudes, while its relation to inferential use and...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Autonomy, Social Norms, and Alignment: Towards a Developmental Framework for Autonomous Artificial Agents",
+        "authors": "Marica Notte, Ludovica Marinucci, Vieri Giuliano Santucci",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11660v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11660v1",
+        "summary": "In recent years, artificial intelligence has made extraordinary progress thanks to large-scale models capable of generalization and the generation of complex outputs. However, transferring this potential into embodied agents reveals a significant limitation: the most advanced systems rely on pre-existing datasets and human feedback strategies that are powerful but insufficient in dynamic or unknown contexts. To adapt, an agent must acquire knowledge through direct interaction with its environmen...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "ZipCodec: Ultra-Low-Frame-Rate Streaming Speech Coding",
+        "authors": "Luca Della Libera, Cem Subakan, Mirco Ravanelli",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11642v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11642v1",
+        "summary": "Neural audio codecs are a fundamental component of modern speech generation systems. While recent codecs achieve increasingly low bitrates, reducing frame rate remains challenging, as each token must preserve more information while maintaining reconstruction quality. We present ZipCodec, a streaming neural speech codec operating at 6.25 Hz and 0.80 kbps with a theoretical latency of 160 ms. Our approach combines large-scale WavLM distillation with a redesigned transformer-based architecture, a s...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "LoaDiff: Conditional Generation of Electricity Consumption Time Series for Energy Analytics",
+        "authors": "Mariia Baranova, Adrien Petralia, Etienne Le Naour, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11639v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11639v1",
+        "summary": "The energy transition is reshaping residential electricity consumption through the increasing adoption of distributed generation, electrified appliances, and demand-response programs. Understanding these evolving behaviors requires access to granular smart-meter data for applications such as load forecasting, appliance detection, and demand-side flexibility analysis. However, such data are subject to strict access restrictions and data-protection regulations. Thus, realistic synthetic alternativ...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "MAPLE: Memory-Augmented Planning with Language and Evolution",
+        "authors": "Kesheng Chen, Yamin Hu, Wenjian Luo",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11636v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11636v1",
+        "summary": "Domain practitioners understand their business constraints but may lack operations-research expertise or dedicated support. LLM-based optimization agents translate natural-language requirements into models or solver programs that established optimization tools can execute. This progress makes optimization more accessible, but real-world operations are dynamic: changing demand, resources, and priorities require updates to data, constraints, and objectives. Methods centered on isolated requests of...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Physics-Informed Neural Networks to Infer the Perpendicular Energy Conductivity in the Scrape-Off Layer of Stellarator Devices",
+        "authors": "J. Gallego, P. Protopapas, A. Bustos, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11628v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11628v1",
+        "summary": "In this work, we develop an inverse Physics-Informed Neural Network (PINN) framework to infer the dependence of the scrape-off layer (SOL) perpendicular heat conductivity on plasma density and temperature, $κ_\\perp(n,T)$. The method combines radial profile measurements of electron density and temperature with the residual of a reduced one-dimensional SOL transport equation, so that the inferred conductivity is constrained by both the measurements and the underlying transport model. Three neural ...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Distributed Optimization of Modular Production Systems using Model-based Reinforcement Learning with Inverse Models",
+        "authors": "Andreas Schwung, Steve Yuwono, Sofiene Lassoued, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11615v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11615v1",
+        "summary": "This paper presents a novel approach for data-driven self-learning control of highly flexible, modular manufacturing systems. Specifically, we employ a novel framework for model-based reinforcement learning which introduces approximate inverse process models within the training of reinforcement policies. This approach disentangles the learning of actuation dynamics and the dynamics in state space, resulting in RL-based training solely within the task space. We propose a lightweight feedforward a...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Making Alternative Data Work: Context-Augmented LLMs for Financial Forecasting",
+        "authors": "Jihoon Kwon, Lawrence Liu, Daekyung Park, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11607v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11607v1",
+        "summary": "When forecasting a firm's future financial performance, alternative data - data collected from non-traditional sources such as consumer transactions, web traffic, and prediction markets - can provide timely signals about firms' operating activities and broader market conditions. These signals may reveal information that is not captured by traditional public sources and can therefore provide complementary information for forecasting firms' future financial performance. However, firm-level alterna...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Learn the Solid, Not the File: Canonical Inputs for Neural Networks on CAD Boundary Representations",
+        "authors": "Heinrich Jiang, Hager Yasser Mohamed, Alexander Hitt, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11573v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11573v1",
+        "summary": "Boundary representation (B-rep) is the standard format used by modern CAD systems for parametric 3D models. It turns out, the exact same solid can be represented by different B-reps: for example, two engineers using different operations, a geometry kernel rebuilding the file, and an export setting repartitioning faces will lead to different B-reps even though the underlying solid remains the same.   We show that existing B-rep encoders are not robust to variation in the B-rep with the same solid...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Enabling Knowledge Graph Understanding at Scale with the EXplore Your Graphs ENgine (EXYGEN)",
+        "authors": "Harshdeep Singh, Yurui Zhu, Giovanni Colavizza, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11569v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11569v1",
+        "summary": "We present EXYGEN (EXplore Your Graphs ENgine), a framework for knowledge graph (KG) understanding that enables conversational access to KGs at scale. We address two questions in sequence. First, how effectively can LLMs perform text-to-SPARQL generation given only automatically derived structured metadata and small graph samples, rather than task-specific fine-tuning? We integrate VoID descriptions and ShEx schemas into a retrieval-augmented generation (RAG) pipeline and ablate KG-derived conte...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "A Comparative Evaluation of Pre-trained Convolutional Neural Networks for Melanoma Detection",
+        "authors": "Wagner Moreno Schmitz, Marco Antonio de Castro Barbosa, Thiago Magalhães Amaral, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11550v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11550v1",
+        "summary": "Early diagnosis of melanoma is critical for improving patient survival rates. However, accurately distinguishing melanoma from other skin lesions remains a significant clinical challenge due to the high visual similarity among lesion types and variability in image acquisition conditions. Artificial intelligence, particularly machine learning, has emerged as a promising tool to support dermatological diagnosis by automating feature extraction from medical images. Among the available approaches, c...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Characterizing Job Power Elasticity for Power-Flexible AI Training",
+        "authors": "Philip Colangelo, Charles Dawson, Shayan Sengupta, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11542v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11542v1",
+        "summary": "Large language model (LLM) training is among the fastest-growing sources of electricity demand in modern data centers, and power availability is a primary bottleneck to continued AI infrastructure growth. Making the power consumption of these workloads flexible could unlock additional power for AI growth, limit increases in electricity prices, and improve the utilization of existing grid infrastructure. However, to realize this flexibility, we must first understand how the performance of trainin...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Prompt Revision as a Source of Cultural Bias in Text-to-Image Systems",
+        "authors": "Aleksandra Urman, Elsa Lichtenegger, Salima Jaoua, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11532v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11532v1",
+        "summary": "Commercial text-to-image systems silently revise user prompts before generating images, a step users typically cannot disable or even see. Yet, existing audits of cultural bias examine only the final images and treat generation as a single pipeline, so they cannot tell where the bias originates. We introduce WORLDVIEW, a multilingual benchmark of 8,960 prompts across 15 languages and 31 language-context pairings. Using it, we audit the revision layer in three systems (DALL-E-3, Imagen-4, GPT-Ima...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Lightweight LiDAR-Based Cone Detection Framework Using Random Forest for Formula Student Driverless",
+        "authors": "Márk Mező-Kerekes, Péter Praksz, Chang Liu",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11527v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11527v1",
+        "summary": "Reliable, low-latency perception is crucial for Formula Student Driverless vehicles, yet many existing pipelines rely on deep learning and multi-sensor fusion, often requiring GPU acceleration. This paper presents a lightweight LiDAR-only perception pipeline tailored for CPU execution, combining ground removal, IMU-based motion compensation, DBSCAN clustering, and geometric feature-based Random Forest classification. Feature importance analysis reduced the model input from 12 to 7 features while...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Learning Interaction between Image and Layout Priors for Joint Image-Layout Generation in Design Templates",
+        "authors": "Shirong Yang, Bo Yang, Ying Cao",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11519v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11519v1",
+        "summary": "In this paper, we address the problem of graphic design template creation, which generates a background image and a layout of foreground elements over the background to form a harmonious composition from an input text.   Prior work on graphic design generation mostly adopts a sequential paradigm, where design elements are generated sequentially. We argue that such a sequential scheme falls short of faithfully capturing the dependency between the background and layout (and thus the joint image-la...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Extending SMT Solving with Non-Ground Clause Learning",
+        "authors": "Yasmine Briefs, Christoph Weidenbach",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11509v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11509v1",
+        "summary": "Quantifier instantiation is currently the main approach to non-ground SMT solving: solvers generate ground instances and solve the resulting ground SMT problems with CDCL(T)-style reasoning. When a conflict is found, conflict analysis learns only a ground clause, even though the conflict comes from instances of non-ground clauses. Yet non-ground reasoning can give exponentially shorter proofs than purely ground reasoning. We propose a calculus that consists of ground instantiations, CDCL(T)-styl...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "Structural priors for data-efficient language learning",
+        "authors": "Yana Veitsman, Jonas Mayer Martins, Jonathan Lautenschlager, et al.",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11505v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11505v1",
+        "summary": "Efficient language learning requires methods to reduce the reliance on large data and computational resources. We investigate structural transfer: First training models on non-language data to induce useful priors for natural language. This approach is a form of weight initialization for multilingual language modeling. We evaluate transfer via next-token-prediction loss, weight shifts in the model, and downstream linguistic benchmarks. Several symbolic data types - notably music, probabilistic g...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "ActMap: Single-Pass Uncertainty Quantification from Generation-Time Activation Maps",
+        "authors": "Jacopo Dardini, Roberta Calegari",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11498v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11498v1",
+        "summary": "Practical uncertainty quantification (UQ) for large language models must decide,   from a single generation, whether a specific answer should be trusted. Existing   methods either sample multiple generations, read only output-token probabilities,   or reduce the model's internal computation to a single hidden state. We introduce   ActMap, a white-box representation that compresses the generation-time hidden-   state trajectory (every layer, every generated token) into a fixed $12 \\times 32   \\ti...",
+        "category": "cs.AI"
+      },
+      {
+        "title": "From Document Silos to Process Intelligence: A Multi-Layer Knowledge Graph for CMC Process Development",
+        "authors": "Reza Amirmoshiri, Faryad Sahneh, Yasser Jangjou",
+        "published": "2026-09-10",
+        "link": "http://arxiv.org/abs/2609.11493v1",
+        "pdf_link": "https://arxiv.org/pdf/2609.11493v1",
+        "summary": "Chemistry, Manufacturing and Controls (CMC) process development generates an enormous body of technical information across a multi-stage, knowledge-intensive continuum from drug discovery to commercial manufacturing. This knowledge is traditionally fragmented across functions and heterogeneous formats, causing traceability gaps and significant knowledge-management costs during technology transfer and regulatory filing. We present a modular agentic-AI platform that converts a heterogeneous corpus...",
+        "category": "cs.AI"
+      }
+    ]
+  }
+}
